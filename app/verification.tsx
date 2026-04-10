@@ -15,27 +15,36 @@ export default function VerificationScreen() {
         <Ionicons name="chevron-back" size={28} color={colors.text} />
       </Pressable>
 
-      <AppTitle title="Enter your 4-digit code" />
+      <View style={{ marginTop: 20 }}>
+        <AppTitle title="Enter your 4-digit code" />
 
-      <AppInput
-        label="Code"
-        value={code}
-        onChangeText={setCode}
-        placeholder="- - - -"
-      />
+        <AppInput
+          label="Code"
+          value={code}
+          onChangeText={setCode}
+          placeholder="- - - -"
+        />
+      </View>
 
-      <Text
+      <View
         style={{
-          color: colors.primary,
-          fontSize: 18,
-          fontWeight: "600",
-          marginTop: 220,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginTop: 180,
+          marginBottom: 40,
         }}
       >
-        Resend Code
-      </Text>
+        <Text
+          style={{
+            color: colors.primary,
+            fontSize: 18,
+            fontWeight: "600",
+          }}
+        >
+          Resend Code
+        </Text>
 
-      <View style={{ marginTop: 20 }}>
         <CircleButton onPress={() => router.push("/location")} />
       </View>
     </Screen>

@@ -9,12 +9,7 @@ export default function SignInScreen() {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={{
-          uri: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop",
-        }}
-        style={styles.hero}
-      />
+      <Image source={require("../assets/images/601 1.png")} />
 
       <View style={styles.content}>
         <Text style={styles.title}>Get your groceries{"\n"}with nectar</Text>

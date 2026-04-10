@@ -16,22 +16,26 @@ import { ProductCard, Screen } from "../../src/ui";
 export default function ShopScreen() {
   const router = useRouter();
   const exclusive = products.slice(0, 2);
+  const bestSelling = products.slice(2, 4);
 
   return (
     <Screen>
       <Text style={{ textAlign: "center", fontSize: 36, marginTop: 10 }}>
         🥕
       </Text>
-      <Text
-        style={{
-          textAlign: "center",
-          marginTop: 8,
-          color: colors.text,
-          fontWeight: "600",
-        }}
-      >
-        📍 Dhaka, Banasree
-      </Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 8 }}>
+        <Ionicons name="location-sharp" size={20} color="#4C4F4D" />
+        <Text
+          style={{
+            marginLeft: 8,
+            color: '#4C4F4D',
+            fontWeight: "600",
+            fontSize: 16
+          }}
+        >
+          Dhaka, Banassre
+        </Text>
+      </View>
 
       <Pressable
         onPress={() => {}}
@@ -45,12 +49,12 @@ export default function ShopScreen() {
           alignItems: "center",
         }}
       >
-        <Ionicons name="search" size={18} color="#666" />
+        <Ionicons name="search" size={20} color="#181B19" />
         <TextInput
           editable={false}
           placeholder="Search Store"
-          style={{ marginLeft: 10, flex: 1 }}
-          placeholderTextColor="#666"
+          style={{ marginLeft: 10, flex: 1, fontSize: 15, fontWeight: "600" }}
+          placeholderTextColor="#7C7C7C"
         />
       </Pressable>
 
@@ -69,36 +73,55 @@ export default function ShopScreen() {
       >
         <View
           style={{
-            backgroundColor: "rgba(255,255,255,0.75)",
-            width: 200,
+            backgroundColor: "rgba(255,255,255,0.85)",
+            width: 220,
             borderRadius: 14,
-            padding: 10,
+            padding: 12,
           }}
         >
-          <Text style={{ fontSize: 22, fontWeight: "800", color: colors.text }}>
+          <Text style={{ fontSize: 20, fontWeight: "800", color: colors.text }}>
             Fresh Vegetables
           </Text>
-          <Text style={{ color: colors.primary, marginTop: 4 }}>
+          <Text style={{ color: colors.primary, marginTop: 4, fontWeight: "600" }}>
             Get Up To 40% OFF
           </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 12 }}>
+             <View style={{ width: 16, height: 6, borderRadius: 3, backgroundColor: colors.primary, marginHorizontal: 2 }} />
+             <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#D9D9D9', marginHorizontal: 2 }} />
+             <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#D9D9D9', marginHorizontal: 2 }} />
+          </View>
         </View>
       </ImageBackground>
 
-      <Text
-        style={{
-          fontSize: 24,
-          fontWeight: "700",
-          color: colors.text,
-          marginTop: 24,
-          marginBottom: 16,
-        }}
-      >
-        Exclusive Offer
-      </Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 24, marginBottom: 16 }}>
+        <Text style={{ fontSize: 24, fontWeight: "700", color: colors.text }}>
+          Exclusive Offer
+        </Text>
+        <Pressable>
+          <Text style={{ color: colors.primary, fontWeight: '600', fontSize: 16 }}>See all</Text>
+        </Pressable>
+      </View>
 
       <FlatList
         horizontal
         data={exclusive}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <ProductCard item={item} />}
+        showsHorizontalScrollIndicator={false}
+      />
+
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 24, marginBottom: 16 }}>
+        <Text style={{ fontSize: 24, fontWeight: "700", color: colors.text }}>
+          Best Selling
+        </Text>
+        <Pressable>
+          <Text style={{ color: colors.primary, fontWeight: '600', fontSize: 16 }}>See all</Text>
+        </Pressable>
+      </View>
+
+      <FlatList
+        horizontal
+        data={bestSelling}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <ProductCard item={item} />}
         showsHorizontalScrollIndicator={false}

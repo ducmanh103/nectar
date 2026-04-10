@@ -5,6 +5,10 @@ import { colors } from "../../src/theme";
 
 const iconMap: Record<string, keyof typeof Ionicons.glyphMap> = {
   shop: "storefront-outline",
+  explore: "search-outline",
+  cart: "cart-outline",
+  favourite: "heart-outline",
+  account: "person-outline",
 };
 
 export default function TabsLayout() {
@@ -25,6 +29,10 @@ export default function TabsLayout() {
       })}
     >
       <Tabs.Screen name="shop" options={{ title: "Shop" }} />
+      <Tabs.Screen name="explore" options={{ title: "Explore" }} />
+      <Tabs.Screen name="cart" options={{ title: "Cart" }} />
+      <Tabs.Screen name="favourite" options={{ title: "Favourite" }} />
+      <Tabs.Screen name="account" options={{ title: "Account" }} />
     </Tabs>
   );
 }

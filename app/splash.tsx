@@ -1,3 +1,4 @@
+import { FontAwesome5 } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -13,8 +14,13 @@ export default function SplashScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.logo}>🥕 nectar</Text>
-      <Text style={styles.sub}>online groceriet</Text>
+      <View style={styles.logoRow}>
+        <FontAwesome5 name="carrot" size={60} color="#fff" style={styles.icon} />
+        <View style={styles.textWrap}>
+          <Text style={styles.logo}>nectar</Text>
+          <Text style={styles.sub}>o n l i n e  g r o c e r i e t</Text>
+        </View>
+      </View>
     </View>
   );
 }
@@ -26,15 +32,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  logoRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  icon: {
+    marginRight: 16,
+    transform: [{ rotate: "-15deg" }],
+  },
+  textWrap: {
+    justifyContent: "center",
+  },
   logo: {
     color: "#fff",
-    fontSize: 42,
-    fontWeight: "800",
+    fontSize: 64,
+    fontWeight: "700",
+    lineHeight: 68,
   },
   sub: {
     color: "#fff",
-    letterSpacing: 6,
-    marginTop: 8,
-    fontSize: 12,
+    fontSize: 14,
+    fontWeight: "500",
+    marginTop: -4,
   },
 });
