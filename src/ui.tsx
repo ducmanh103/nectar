@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React from "react";
 import {
+    Image,
     Pressable,
     ScrollView,
     StyleSheet,
@@ -10,6 +11,7 @@ import {
     View,
 } from "react-native";
 import { Product } from "./data";
+import { productImages } from "./images";
 import { colors, radius, shadow, spacing } from "./theme";
 
 export function Screen({
@@ -144,12 +146,21 @@ export function AppInput({
 }
 
 export function ProductCard({ item }: { item: Product }) {
+  const prodImg = productImages[item.id as keyof typeof productImages];
   return (
     <Pressable
       onPress={() => router.push(`/product/${item.id}` as any)}
       style={styles.card}
     >
-      <Text style={styles.cardEmoji}>{item.emoji}</Text>
+      {prodImg ? (
+        <Image
+          source={prodImg}
+          style={styles.cardImage}
+          resizeMode="contain"
+        />
+      ) : (
+        <Text style={styles.cardEmoji}>{item.emoji}</Text>
+      )}
       <Text style={styles.cardTitle} numberOfLines={2}>
         {item.name}
       </Text>
@@ -257,6 +268,11 @@ const styles = StyleSheet.create({
   cardEmoji: {
     fontSize: 58,
     textAlign: "center",
+    marginBottom: 12,
+  },
+  cardImage: {
+    width: "100%",
+    height: 100,
     marginBottom: 12,
   },
   cardTitle: {
